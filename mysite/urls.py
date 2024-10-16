@@ -21,7 +21,6 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', views.data),
     path('api/tasks/', views.tasks),
-    path('', views.flet_client)
+    path('', views.flet_frontend)
 ]

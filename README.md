@@ -2,7 +2,7 @@
 Minimalist wedding between django and flet
 
 ```commandline
-cd counter
+cd todo
 flet build web --base-url static/web main.py [-o build/web]
 ```
 
