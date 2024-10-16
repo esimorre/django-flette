@@ -1,11 +1,13 @@
+import sys
 
 import flet
 from flet import IconButton, Page, Row, TextField, icons, Text
 import req
 
 async def main(page: Page):
-    import micropip
-    await micropip.install("requests")
+    if sys.platform == "emscripten":  # check if run in Pyodide environment
+        import micropip
+        await micropip.install("requests")
 
     page.title = "Flet counter example"
     page.vertical_alignment = "center"
@@ -20,7 +22,7 @@ async def main(page: Page):
     def plus_click(e):
         txt_number.value = str(int(txt_number.value) + 1)
         page.update()
-        rep =  req.fetch("http://localhost:8000/api")
+        rep =  req.fetch("http://127.0.0.1:8000/api")
         text.value = rep["text"]
         page.update()
 
