@@ -1,0 +1,30 @@
+- model: auth.user
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$870000$FTppVNHt9owY5ympxKytG2$EqSfPGuAzSB1behdgI0n1ZyhYkOkio8UmI7X8/voS3c=
+    last_login: 2024-10-16 09:52:38.116897+00:00
+    is_superuser: true
+    username: admin
+    first_name: ''
+    last_name: ''
+    email: admin@flet.fr
+    is_staff: true
+    is_active: true
+    date_joined: 2024-10-16 09:52:11.433621+00:00
+    groups: []
+    user_permissions: []
+- model: auth.group
+  pk: 1
+  fields:
+    name: groupe 1
+    permissions: []
+- model: auth.group
+  pk: 2
+  fields:
+    name: groupe 2
+    permissions: []
+- model: auth.group
+  pk: 3
+  fields:
+    name: groupe 3
+    permissions: []

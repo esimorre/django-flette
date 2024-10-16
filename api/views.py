@@ -1,11 +1,6 @@
 from django.contrib.auth.models import Group
 from django.http import JsonResponse
-from django.shortcuts import redirect
 
-
-
-def flet_frontend(request):
-    return redirect("/static/web/index.html")
 
 def tasks(request):
     data = {"tasks":[]}
