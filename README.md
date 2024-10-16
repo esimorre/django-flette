@@ -29,3 +29,14 @@ flet run -p 8001 main.py
 # separate frontend (browser)
 flet run -p 8001 --web main.py
 ```
+
+## Deployement
+```bash
+wget https://github.com/esimorre/django-flette/archive/refs/heads/master.zip
+unzip master.zip
+venv
+pip install django==5.0 pyYAML
+get static.zip
+unzip static.zip
+
+```
