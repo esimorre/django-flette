@@ -8,13 +8,20 @@ Implementation of a minimalist pure python frontend/backend POC based on django 
    * a unique API function: initial loading of tasks corresponding to the names of django groups in base
 
 
-
-```commandline
-cd todo
-flet build web --base-url frontend -o ../static/web main.py
+## flet client generation 
+```python
+# modify this in todo/main.py
+API_URL = "https://MYSITE/api/"
 ```
 
+```bash
+cd todo
+flet build web --base-url frontend -o ../static/web
+cd ..
+zip static
+```
 
+## Installation (dev local)
 ```bash
 python manage.py migrate
 # populate: user admin(admin) & groups/tasks
@@ -37,6 +44,9 @@ unzip master.zip
 venv
 pip install django==5.0 pyYAML
 get static.zip
-unzip static.zip
+unzip static.zip -d ROOT_PROJECT
 
+# Apache: static pathes
+#/frontend/admin/=/.venv/lib/python3.12/site-packages/django/contrib/admin/static/admin/
+#/frontend/=/ROOT_PROJECT/static/web/
 ```

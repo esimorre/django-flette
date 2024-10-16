@@ -2,6 +2,13 @@ import sys
 
 import flet as ft
 
+#API_URL = "https://MY_SITE/api/"
+API_URL = "http://127.0.0.1:8000/api/"
+def fetch(url):
+    import requests
+    rep = requests.get(url)
+    return rep.json()
+
 
 class Task(ft.Column):
     def __init__(self, task_name, task_status_change, task_delete):
@@ -78,6 +85,7 @@ class TodoApp(ft.Column):
     # application's root control is a Column containing all other controls
     def __init__(self):
         super().__init__()
+
         self.new_task = ft.TextField(
             hint_text="What needs to be done?", on_submit=self.add_clicked, expand=True
         )
@@ -125,14 +133,14 @@ class TodoApp(ft.Column):
             ),
         ]
 
-
     def fetch_tasks(self):
-        for t in fetch("http://127.0.0.1:8000/api/tasks")["tasks"]:
+        for t in fetch(API_URL + "tasks")["tasks"]:
             self.tasks.controls.append(Task(t, self.task_status_change, self.task_delete))
         self.update()
 
     def add_clicked(self, e):
         if self.new_task.value:
+
             task = Task(self.new_task.value, self.task_status_change, self.task_delete)
             self.tasks.controls.append(task)
             self.new_task.value = ""
@@ -167,10 +175,6 @@ class TodoApp(ft.Column):
                 count += 1
         self.items_left.value = f"{count} active item(s) left"
 
-def fetch(url):
-    import requests
-    rep = requests.get(url)
-    return rep.json()
 
 
 async def main(page: ft.Page):
@@ -184,7 +188,7 @@ async def main(page: ft.Page):
 
     # create app control and add it to the page
     page.add(TodoApp())
-    page.controls[0].fetch_tasks()
 
+    page.controls[0].fetch_tasks()
 
 ft.app(main)
