@@ -1,5 +1,6 @@
 # django-flette
 Minimalist wedding between django and flet
+[Live demo](https://ricocs.alwaysdata.net/)
 
 Implementation of a minimalist pure python frontend/backend POC based on django and flet
 
