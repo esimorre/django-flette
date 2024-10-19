@@ -11,13 +11,16 @@ Implementation of a minimalist pure python frontend/backend POC based on django 
 
 ## flet client generation 
 ```python
-# modify this in todo/main.py
+# can modify this in todo/main.py
 API_URL = "https://MYSITE/api/"
+# or with same origin
+API_URL = None
 ```
 
 ```bash
 cd todo
-flet build web --base-url frontend -o ../static/web
+# --web-renderer html : lighter client
+flet build web --base-url frontend --web-renderer html -o ../static/web
 cd ..
 zip static
 ```
@@ -42,7 +45,7 @@ flet run -p 8001 --web main.py
 ```bash
 wget https://github.com/esimorre/django-flette/archive/refs/heads/master.zip
 unzip master.zip
-venv
+(build venv)
 pip install django==5.0 pyYAML
 get static.zip
 unzip static.zip -d ROOT_PROJECT
