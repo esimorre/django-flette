@@ -137,11 +137,15 @@ class TodoApp(ft.Column):
 
 
     def fetch_tasks(self):
-        api_url = API_URL or self.url.replace("/index.html", "").replace("/frontend", "") + "/api/"
-        print ("api url", api_url)
-        for t in fetch(api_url + "tasks")["tasks"]:
-            print("get task", t)
-            self.tasks.controls.append(Task(t, self.task_status_change, self.task_delete))
+        if self.url.startswith("http") or API_URL:
+            api_url = API_URL or self.url.replace("/index.html", "").replace("/frontend", "") + "/api/"
+            print ("api url", api_url)
+            for t in fetch(api_url + "tasks")["tasks"]:
+                print("get task", t)
+                self.tasks.controls.append(Task(t, self.task_status_change, self.task_delete))
+        else:
+            task = "fetch api not available in this mode (define API_URL)"
+            self.tasks.controls.append(Task(task, self.task_status_change, self.task_delete))
         self.update()
 
     def add_clicked(self, e):
