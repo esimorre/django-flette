@@ -16,15 +16,20 @@
 - model: auth.group
   pk: 1
   fields:
-    name: groupe 1
+    name: 'django-flette: todo flet app with tasks loaded from django groups'
     permissions: []
 - model: auth.group
   pk: 2
   fields:
-    name: groupe 2
+    name: 'frontend implementation: flet web static / html renderer'
     permissions: []
 - model: auth.group
   pk: 3
   fields:
-    name: groupe 3
+    name: frontend & backend on the same host
+    permissions: []
+- model: auth.group
+  pk: 4
+  fields:
+    name: task = django group name loaded by a simple json API
     permissions: []

@@ -135,13 +135,14 @@ class TodoApp(ft.Column):
             ),
         ]
 
-        self.fetch_tasks()
 
     def fetch_tasks(self):
         api_url = API_URL or self.url.replace("/index.html", "").replace("/frontend", "") + "/api/"
         print ("api url", api_url)
         for t in fetch(api_url + "tasks")["tasks"]:
+            print("get task", t)
             self.tasks.controls.append(Task(t, self.task_status_change, self.task_delete))
+        self.update()
 
     def add_clicked(self, e):
         if self.new_task.value:
@@ -193,5 +194,7 @@ async def main(page: ft.Page):
 
     # create app control and add it to the page
     page.add(TodoApp(page.url))
+
+    page.controls[0].fetch_tasks()
 
 ft.app(main)
